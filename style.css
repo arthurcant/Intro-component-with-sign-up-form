@@ -1,0 +1,160 @@
+@charset "UTF-8";
+
+* {
+    margin: 0;
+    padding: 0;
+    border: none;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+html{
+    --vermelho: #f27776;
+    --vermelho-primario:hsl(0, 100%, 74%);
+    --roxo: #6055a5;
+    --cinza: #bcb9d4;
+    --primary-green: hsl(154, 59%, 51%);
+
+    font-size: 62.5%;
+}
+
+body {
+    background-image: url("images/bg-intro-desktop.png");
+    background-color: var(--vermelho);
+}
+
+
+#conteine{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    height: 100%;
+    align-items: center;
+}
+
+/* inicio: Parte esquerda de dentro do conteiner */
+#tests {
+    width: 43rem;
+} 
+
+#title, #titleSub {
+    color: #fff;
+}
+
+#title {
+    font-size: 4rem;
+    margin-bottom: 2rem;
+}
+
+#titleSub {
+    font-size: 1.8rem;
+}
+
+/* fim da parte esquerda */
+
+/* início: Campo de verificação na direita */
+
+.column{
+    display: flex;
+    flex-direction: column;
+}
+
+#bar-ad {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-bottom: 1rem;
+    width: auto;
+    height: 5.8rem;
+
+    border-radius: 1rem;
+    background-color: var(--roxo);
+    font-size: 2rem;
+
+    color: white;
+
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+
+    background-color: white;
+    
+    width: 56.1rem;
+    min-height: 42.8rem;
+    
+    padding: 4.8rem;
+}
+
+.area {
+    display: flex;
+    flex-direction: column;
+
+    margin-bottom: 1.6rem;
+}
+
+.area-inputs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 46.5rem;
+    height: 4.8rem;
+ 
+    border: 1px solid var(--cinza);
+    border-radius: 0.5rem;
+}
+
+.area-inputs:hover {
+    
+    border: 1px solid black;
+}
+
+input {
+    font-weight: bolder;
+    font-size: 1.6rem;
+    outline: none;
+    width: 45rem;
+}
+
+input::placeholder {
+    font-size: 1.5rem;
+    padding-left: 1.5rem;
+}
+
+.erro {
+    border-width: 2px;
+    border-color: var(--vermelho-primario);
+}
+
+.erro:hover {
+    border: 1px solid var(--vermelho-primario);
+}
+
+.menssage {
+    display: none;
+    padding-right: 0.25rem;
+    margin-top: 0.5rem;
+    color: var(--vermelho-primario);
+
+    font-style: italic;
+    align-self: flex-end;
+}
+
+input[type="submit"] {
+    color: #fff;
+    padding: 1rem;
+    background-color: var(--primary-green);
+}
+
+
+
+
+/* fim: do campo de verificação na direita */
+
