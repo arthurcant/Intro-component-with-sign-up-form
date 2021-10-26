@@ -192,6 +192,11 @@ input::placeholder {
     padding-left: 1.5rem;
 }
 
+.icon-erro {
+    display: none;
+    margin-right: 2rem;
+}
+
 .erro {
     border-width: 2px;
     border-color: var(--vermelho-primario);
