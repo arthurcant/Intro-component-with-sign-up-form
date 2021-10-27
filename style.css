@@ -101,6 +101,14 @@ body {
     top: -12px;
 }
 
+#bar-ad, #shadow { 
+    cursor: pointer;
+}
+
+#bar-ad:hover {
+    filter: brightness(87%);
+}
+
 #bar-ad::after {
     display: block;
     margin-bottom: -47px;
@@ -171,6 +179,11 @@ form {
     width: min(465px, 103%);
     height: 4.8rem;
  
+    border: 1px solid var(--cinza);
+    border-radius: 0.5rem;
+}
+
+.normal {
     border: 1px solid var(--cinza);
     border-radius: 0.5rem;
 }
