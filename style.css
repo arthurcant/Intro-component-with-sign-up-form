@@ -193,23 +193,41 @@ form {
     border: 1px solid black;
 }
 
+/* 
 input {
     font-weight: bolder;
     font-size: 1.6rem;
     outline: none;
     width: 45rem;
+} .area-inputs:not(input:nth-child(5))
+*/
+
+/* 
+.area-inputs > input:not(input:nth-child(4)) {
+    font-weight: bolder;
+    font-size: 1.6rem;
+    outline: none;
+    width: 40rem;
+} */
+
+.area-inputs > input:not(input:nth-child(4)) {
+    font-weight: bolder;
+    font-size: 1.6rem;
+    outline: none;
+    width: 38rem;
+    margin-left: -2rem;
 }
 
 input::placeholder {
     font-size: 1.5rem;
-    padding-left: 1.5rem;
 }
 
 .icon-erro {
-    display: none;
-    margin-right: 2rem;
+    opacity: 0;
+    position: relative;
+    right: -15px;
+    /* float: right; */
 }
-
 .erro {
     border-width: 2px;
     border-color: var(--vermelho-primario);

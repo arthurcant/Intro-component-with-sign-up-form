@@ -1,22 +1,26 @@
 function main() {
-    // fist_name();
-    // last_name();
+    fist_name();
+    last_name();
     email();    
+    password();
 }
 
 function fist_name(){
 
     let fistName = document.getElementsByClassName("textToSee")[0]; 
-    let message = document.getElementsByClassName("icon-erro")[0];
+    let message = document.getElementsByClassName("menssage")[0];    
+    let messageIcon = document.getElementsByClassName("icon-erro")[0];
     let areasInputs = document.getElementsByClassName("area-inputs")[0];
     
-    if(fistName.value.length > 0){
-        
+    if(fistName.value.length > 0){        
         areasInputs.classList.remove("erro");
+        messageIcon.style.opacity = "0";
         message.style.display = "none";
     }else {
         areasInputs.classList.add("erro");
+        messageIcon.style.opacity = "1";
         message.style.display = "block";
+
     }
 
 }
@@ -24,23 +28,27 @@ function fist_name(){
 function last_name(){
     
     let lastName = document.getElementsByClassName("textToSee")[1]; 
-    let message = document.getElementsByClassName("icon-erro")[1];
+    let message = document.getElementsByClassName("menssage")[1];
+    let messageIcon = document.getElementsByClassName("icon-erro")[1];
     let areasInputs = document.getElementsByClassName("area-inputs")[1];
     
     if(lastName.value.length > 0){
         
         areasInputs.classList.remove("erro");
+        messageIcon.style.opacity = "0";
         message.style.display = "none";
     }else {
         areasInputs.classList.add("erro");
+        messageIcon.style.opacity = "1";
         message.style.display = "block";
+
     }
 
 }
 
 
 function email(){
-
+    
     let message = document.getElementsByClassName("menssage")[2]; // Manipula as mensagem que vão aparecer se o usuário digitou algo errado
     let messageIcon = document.getElementsByClassName("icon-erro")[2]; // aparecer o icone erro
     let messageStore = []; // Array para amostra os erros para o usuário
@@ -54,23 +62,116 @@ function email(){
         if(emailContent.indexOf("@") > -1) {
             let index_aroba = emailContent.indexOf("@");
 
-            if((emailContent[index_aroba+1] === "" || emailContent[index_aroba+1] == null ) && (emailContent[index_aroba+2] === "") || emailContent[index_aroba+2] == null){
-                alert("Email tem @ mais depois disso não tem mais nada.");  
+            if(!(emailContent[index_aroba+1] === "" || emailContent[index_aroba+1] == null ) && !((emailContent[index_aroba+2] === "") || emailContent[index_aroba+2] == null)){
+               if(emailContent.indexOf(".") > -1){
+                   let indexDot =  emailContent.indexOf(".");
+                if((emailContent[indexDot+1] == seachLetter(emailContent, "c")) && (emailContent[indexDot+2] == seachLetter(emailContent, "o") && (emailContent[indexDot+3] == seachLetter(emailContent, "m")))){                       
+                    areasInputs.classList.remove("erro");
+                    message.style.display = "none";
+                    messageIcon.style.opacity = "0";
+                }else {
+                    messageStore.push(`Email cannot lack letters after . <br>`);
+                    areasInputs.classList.add("erro");
+                    message.style.display = "block";
+                    messageIcon.style.opacity = "1";
+                }
+                
+               }else {
+                    messageStore.push(`Email cannot lack the signal . <br>`);
+                    areasInputs.classList.add("erro");
+                    message.style.display = "block";
+                    messageIcon.style.opacity = "1";
+                }
 
+            } else {
+                messageStore.push(`Email cannot lack letters after @.<br>`);
+                areasInputs.classList.add("erro");
+                message.style.display = "block";
+                messageIcon.style.opacity = "1";
+                
             }
         }else if(emailContent.indexOf("@") == -1) {
-        messageStore.push(`Email cannot lack de @ in its text.<br>`);
-
+            messageStore.push(`Email cannot lack @ in its text.<br>`);
+            
+            areasInputs.classList.add("erro");
+            message.style.display = "block";
+            messageIcon.style.opacity = "1";
+            
         }
-
+        
     }else if(emailContent.length == 0) {
         areasInputs.classList.add("erro");
         message.style.display = "block";
+        messageIcon.style.opacity = "1";
 
         messageStore.push(`Email cann't be empty. <br>`);
     }
     
-    // messageStore.push(`Password cann't be empty <br>`);
+    
+    message.innerHTML = messageStore.join("");
+    message.style.display = "block";
+    
+}
+
+function password() {
+    
+    let verify01 = false, verify02 = false;
+    let message = document.getElementsByClassName("menssage")[3]; 
+    let messageIcon = document.getElementsByClassName("icon-erro")[3]; 
+    let messageStore = [];
+
+    let password = document.getElementsByClassName("textToSee")[3]; 
+    let areasInputs = document.getElementsByClassName("area-inputs")[3];
+
+    const passwordContent = password.value;
+
+    if(passwordContent.length >= 8){
+        if(!onlyNumber(passwordContent)){
+            if(seachLetterUpperCase(passwordContent, passwordContent)){
+                verify01 = true;
+                alert("A senha tem letra maiuscula.");
+            }else {
+                messageStore.push("The password need at least one upper letter. <br>");
+               
+                areasInputs.classList.add("erro");
+                message.style.display = "block";
+                messageIcon.style.opacity = "1";
+               
+            }
+            verify02 = true;
+    
+            if(seachLetterSpecial(passwordContent, passwordContent)){
+                alert("A senha tem um character especial.");
+                verify02 = true;
+            }else {
+                messageStore.push("The password need at least one character special <br> ! @ # $ % & * ( ) + = - _ § { [ } ] one of these. <br>");
+               
+                areasInputs.classList.add("erro");
+                message.style.display = "block";
+                messageIcon.style.opacity = "1";
+            }
+    
+            if(verify01 && verify02){
+                areasInputs.classList.remove("erro");
+                massege.style.display = "none";
+                messageIcon.style.opacity = "0";
+            }
+        } else {
+            messageStore.push(`Password cannot only has numbers. <br>`); 
+
+            areasInputs.classList.add("erro");
+            message.style.display = "block";
+            messageIcon.style.opacity = "1";
+        }
+
+
+    }else if(passwordContent.length < 8) {
+        messageStore.push(`Password need has at least 8 positions. <br>`); 
+
+        areasInputs.classList.add("erro");
+        message.style.display = "block";
+        messageIcon.style.opacity = "1";
+    }
 
     message.innerHTML = messageStore.join("");
     message.style.display = "block";
@@ -81,10 +182,81 @@ function seachLetter(string, word) {
     
     for(let y in string){
         if(string[y] === word){
+            return word;
+        }
+    }
+
+    return false;
+}
+
+function seachLetterSpecial(string, string02) {
+    
+    for(let y in string){
+        if(string[y] === ["!", "@", "#", "$", "%", "&", "*", "(", ")", "+", "=", "-", "_", "§", "{", "[", "}", "]", "}"].indexOf(string02[y])){
+            return true;
+        }
+    }
+
+    return false;
+}
+
+
+function onlyNumber(string) {
+    let amountNumber = string.length;
+    let verify = 0;
+    for(let y in string){
+        if(["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"].indexOf(string02[y])){
+            
+            verify++
+
+            if(verify == amountNumber){
+                return true
+            }
+        }
+    }
+
+    return false;
+}
+
+
+function isNumber(string) {
+
+    if(["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"].indexOf(string)){
+        
+        return true
+    }
+
+    return false;
+}
+
+function seachLetterUpperCase(string, string02) {
+    
+    for(let y in string){
+        if(isNumber(string[y])){
+            continue;
+        }else {
+            if(string[y] === string02[y].toUpperCase()){
+                return true;
+            }
 
         }
-        
-
     }
+
+    return false;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
