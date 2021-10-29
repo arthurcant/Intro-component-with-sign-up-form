@@ -279,6 +279,14 @@ input[type="submit"] {
 
 @media screen and (max-width: 769px){
 
+    .area-inputs > input:not(input:nth-child(4)) {
+        font-weight: bolder;
+        font-size: 1.6rem;
+        outline: none;
+        width: 36rem;
+        margin-left: -2rem;
+    }
+
     html, body {
         width: 100vw;
         height: auto;
@@ -325,8 +333,15 @@ input[type="submit"] {
     
 }
 
+@media screen and (max-width: 550px) {
+    .area-inputs > input:not(input:nth-child(4)) {
+        font-weight: bolder;
+        font-size: 1.6rem;
+        outline: none;
+        width: 28rem;
+        margin-left: -2rem;
+    }
 
-@media screen and (max-width: 500px) {
     #area-submit::after {
         top: -48px;
     }
