@@ -28,11 +28,11 @@
                     <div id="offer"> <b>Try it free 7 days</b> then $20/month. thereafther</div>
                 </div>
 
-                <form action="#" method="get">
+                <form  action="https://formspree.io/f/mzbylbbv" method="POST">
                     
                     <div class="area">
                         <div class="area-inputs">
-                            <input type="text" class="textToSee" placeholder="Fist name">
+                            <input type="text" name="_fname" class="textToSee" placeholder="Fist name">
                             <img src="images/icon-error.svg" class="icon-erro" alt="icone de erro">
                         </div>
                         <div class="menssage">Fist name cann't be empty</div>
@@ -40,7 +40,7 @@
                     
                     <div class="area">
                         <div class="area-inputs">
-                            <input type="text" class="textToSee" placeholder="Last Name">
+                            <input type="text" name="_lname" class="textToSee" placeholder="Last Name">
                             <img src="images/icon-error.svg" class="icon-erro" alt="icone de erro">
                         </div>
                         <div class="menssage"> Last name cann't be empty</div>
@@ -48,7 +48,7 @@
                     
                     <div class="area">
                         <div class="area-inputs">
-                            <input type="text" class="textToSee" placeholder="Email Address">
+                            <input type="text" name="_replyto" class="textToSee" placeholder="Email Address">
                             <img src="images/icon-error.svg" class="icon-erro" alt="icone de erro">
                         </div>
                         <div class="menssage">Looks like this is not an email</div>
@@ -56,13 +56,13 @@
                     
                     <div class="area">
                         <div class="area-inputs">
-                            <input type="text" class="textToSee" placeholder="Password">
+                            <input type="text" name="password" class="textToSee" placeholder="Password">
                             <img src="images/icon-error.svg" class="icon-erro" alt="icone de erro">
                         </div>
                         <div class="menssage">Password cann't be empty</div>
                     </div>                    
                     <div id="area-submit">
-                        <div id="shadow" onclick="main()"></div>
+                        <!-- <div id="shadow" onclick="main()"></div> -->
                         <input  type="submit" id="botton-submit" onclick="main()" value="CLAIM YOUR FREE TRIAL">             
                         <div id="massange-text"><span id="menssage-orientation">By clicking the button, you are agreeing to our</span> <span id="menssage-term">Terms and Services</span></div>
                     </div>
