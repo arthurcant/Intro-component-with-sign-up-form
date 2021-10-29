@@ -93,7 +93,7 @@ function email() {
 
                 }
             } else {
-                messageStore.push(`Email cannot lack a letter before @ or after @ cannot have a dot..<br>`);
+                messageStore.push(`Email cannot lack a letter before @ or after @ cannot have a dot.<br>`);
                 areasInputs.classList.add("erro");
                 message.style.display = "block";
                 messageIcon.style.opacity = "1";
@@ -137,8 +137,8 @@ function password() {
 
     if (passwordContent.length >= 8) {
         if (onlyNumber(passwordContent)) {
-            messageStore.push(`Password cannot only has numbers. <br>`);
-
+            messageStore.push(`The password cannot only has numbers. <br>`);
+            
             areasInputs.classList.add("erro");
             message.style.display = "block";
             messageIcon.style.opacity = "1";
@@ -148,13 +148,13 @@ function password() {
             } else {
                 messageStore.push("The password need at least one upper letter. <br>");
             }
-
+            
             if (seachLetterSpecial(passwordContent)) {
                 verify02 = true;
             } else {
                 messageStore.push("The password need at least one character special <br> ! @ # $ % & * ( ) + = - _ § { [ } ] one of these. <br>");
             }
-
+            
             if (verify01 && verify02) {
                 areasInputs.classList.remove("erro");
                 message.style.display = "none";
@@ -165,23 +165,23 @@ function password() {
                 messageIcon.style.opacity = "1";
             }
         }
-
-
+        
+        
     } else if (passwordContent.length < 8) {
-        messageStore.push(`Password need has at least 8 positions. <br>`);
-
+        messageStore.push(`The password need has at least 8 positions. <br>`);
+        
         areasInputs.classList.add("erro");
         message.style.display = "block";
         messageIcon.style.opacity = "1";
     }
-
+    
     message.innerHTML = messageStore.join("");
     message.style.display = "block";
 
 }
 
 function seachLetter(string, word) {
-
+    
     for (let y in string) {
         if (string[y] === word) {
             return word;

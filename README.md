@@ -27,7 +27,28 @@ Seus usuários devem ser capazes de:
   - O endereço de e-mail deve está formatado corretamente (ou seja, um endereço de e-mail correto deve ter esta estrutura: `nome @ host.com`).
   - Se o campo email estive vazio a mensagem deve ser "Email não pode está vazio" em inglês "Email cann't be empty."
   - Se o campo email estive preenchido com algumas letra, mas sem o @ então a messagem deve ser "Email não pode falta o @ em seu endereço" inglês "Email cannot lack @ in its text." 
-  Se o campo email estive preenchido 
+  - Se o campo email estive preenchido `@.com` a mensagem deve ser amostrada "Email não pode falta uma letra antes @ ou depois do @ não pode haver um ponto" em inglês "Email cannot lack a letter before @ or after @ cannot have a dot."
+  - Se estive faltando um @ no endereço deve ser amostrado 
+    a mensagem "Email não pode falta @ em seu endereço" em inglês "Email cannot lack @ in its text"
+  - Se estive faltando um "." no endereço deve ser amostrado 
+    a mensagem "Email não pode falta . em seu endereço" em inglês "Email cannot lack the signal . "
+  - Tanto o @ como o sinal "." é verificado se antes ou depois deles tem alguma letra digitada.
+  ## Para o password
+
+* Senha Deve ter no mínimo 8 caracteres.
+* Não deve conter só numeros. 
+* Deve conter um letra maiúscula e um caratere especial (! @ # $ % & * ( ) + = - _ § { [ } ])
+
+**Segue um tabela com as mensagem traduzidas em português:**
+
+Português | Inglês         
+--------  |----------
+A senha precisa ter pelo menos 8 posições          |The password need has at least 8 positions.    
+A senhar não pode ter somente números          |The password cannot only has numbers. 
+A senhar precisa ter pelo menos um letra maiúscula          | The password need at least one upper letter.
+A senhar precisa pelo menos um caractere especial <br>  ! @ # $ % & * ( ) + = - _ § { [ }  ] um desses.          |The password need at least one character  special <br> ! @ # $ % & * ( ) + = - _ § { [ }  ] one of  these.
+
+
 Quer algum apoio no desafio? [Junte-se à nossa comunidade no Slack] (https://www.frontellenceor.io/slack) e faça perguntas no canal ** # help **.
 
 ## Onde encontrar tudo
