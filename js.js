@@ -154,7 +154,6 @@ function password() {
 
             enableErroShow(areasInputs, messageIcon, message);
 
-
         } else {
             if (seachLetterUpperCase(passwordContent, passwordContent)) {
                 verify01 = true;
