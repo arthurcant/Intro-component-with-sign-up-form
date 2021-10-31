@@ -1,8 +1,25 @@
 function main() {
-    fist_name();
-    last_name();
-    email();
-    password();
+
+
+    let form = document.getElementById("form-land");
+
+    form.addEventListener("submit", (e) => {
+        
+        let verify01 = fist_name();
+        let verify02 = last_name();
+        let verify03 = email();
+        let verify04 = password();
+
+        if(verify01 == true && verify02 == true && verify03 == true && verify04 == true) {
+            
+    
+        }else {
+            e.preventDefault();
+        }
+    });
+
+
+
 }
 
 function fist_name() {
@@ -13,13 +30,12 @@ function fist_name() {
     let areasInputs = document.getElementsByClassName("area-inputs")[0];
 
     if (fistName.value.length > 0) {
-        areasInputs.classList.remove("erro");
-        messageIcon.style.opacity = "0";
-        message.style.display = "none";
+        disableErroShow(areasInputs, messageIcon, message);
+        return true;
+
     } else {
-        areasInputs.classList.add("erro");
-        messageIcon.style.opacity = "1";
-        message.style.display = "block";
+        enableErroShow(areasInputs, messageIcon, message);
+        return false;
 
     }
 
@@ -33,19 +49,16 @@ function last_name() {
     let areasInputs = document.getElementsByClassName("area-inputs")[1];
 
     if (lastName.value.length > 0) {
+        disableErroShow(areasInputs, messageIcon, message);
+        return true;
 
-        areasInputs.classList.remove("erro");
-        messageIcon.style.opacity = "0";
-        message.style.display = "none";
     } else {
-        areasInputs.classList.add("erro");
-        messageIcon.style.opacity = "1";
-        message.style.display = "block";
+        enableErroShow(areasInputs, messageIcon, message);
+        return false;
 
     }
 
 }
-
 
 function email() {
 
@@ -62,59 +75,59 @@ function email() {
         if (emailContent.indexOf("@") > -1) {
             let index_aroba = emailContent.indexOf("@");
 
-            if ( !((emailContent[index_aroba-1] == "") || (emailContent[index_aroba-1] == null)) &&  !(emailContent[index_aroba+1] == "."))  {
+            if (!((emailContent[index_aroba - 1] == "") || (emailContent[index_aroba - 1] == null)) && !(emailContent[index_aroba + 1] == ".")) {
 
                 if (!(emailContent[index_aroba + 1] === "" || emailContent[index_aroba + 1] == null) && !((emailContent[index_aroba + 2] === "") || emailContent[index_aroba + 2] == null)) {
                     if (emailContent.indexOf(".") > -1) {
                         let indexDot = emailContent.indexOf(".");
                         if ((emailContent[indexDot + 1] == seachLetter(emailContent, "c")) && (emailContent[indexDot + 2] == seachLetter(emailContent, "o") && (emailContent[indexDot + 3] == seachLetter(emailContent, "m")))) {
-                            areasInputs.classList.remove("erro");
-                            message.style.display = "none";
-                            messageIcon.style.opacity = "0";
+                            disableErroShow(areasInputs, messageIcon, message);
+                            return true;
+
                         } else {
                             messageStore.push(`Email cannot lack letters after . <br>`);
-                            areasInputs.classList.add("erro");
-                            message.style.display = "block";
-                            messageIcon.style.opacity = "1";
+
+                            enableErroShow(areasInputs, messageIcon, message);
+                            return false;
+
                         }
 
                     } else {
                         messageStore.push(`Email cannot lack the signal . <br>`);
-                        areasInputs.classList.add("erro");
-                        message.style.display = "block";
-                        messageIcon.style.opacity = "1";
+                        
+                        enableErroShow(areasInputs, messageIcon, message)
+                        return false;
                     }
 
                 } else {
                     messageStore.push(`Email cannot lack letters after @.<br>`);
-                    areasInputs.classList.add("erro");
-                    message.style.display = "block";
-                    messageIcon.style.opacity = "1";
+
+                    enableErroShow(areasInputs, messageIcon, message)
+                    return false;
 
                 }
             } else {
                 messageStore.push(`Email cannot lack a letter before @ or after @ cannot have a dot.<br>`);
-                areasInputs.classList.add("erro");
-                message.style.display = "block";
-                messageIcon.style.opacity = "1";
 
+                enableErroShow(areasInputs, messageIcon, message)
+                return false;
             }
 
         } else if (emailContent.indexOf("@") == -1) {
             messageStore.push(`Email cannot lack @ in its text.<br>`);
 
-            areasInputs.classList.add("erro");
-            message.style.display = "block";
-            messageIcon.style.opacity = "1";
+            enableErroShow(areasInputs, messageIcon, message)
+            return false;
 
         }
 
     } else if (emailContent.length == 0) {
-        areasInputs.classList.add("erro");
-        message.style.display = "block";
-        messageIcon.style.opacity = "1";
-
         messageStore.push(`Email cann't be empty. <br>`);
+
+        enableErroShow(areasInputs, messageIcon, message)
+        return false;
+
+
     }
 
 
@@ -138,50 +151,50 @@ function password() {
     if (passwordContent.length >= 8) {
         if (onlyNumber(passwordContent)) {
             messageStore.push(`The password cannot only has numbers. <br>`);
-            
-            areasInputs.classList.add("erro");
-            message.style.display = "block";
-            messageIcon.style.opacity = "1";
+
+            enableErroShow(areasInputs, messageIcon, message);
+
+
         } else {
             if (seachLetterUpperCase(passwordContent, passwordContent)) {
                 verify01 = true;
             } else {
                 messageStore.push("The password need at least one upper letter. <br>");
             }
-            
+
             if (seachLetterSpecial(passwordContent)) {
                 verify02 = true;
             } else {
                 messageStore.push("The password need at least one character special <br> ! @ # $ % & * ( ) + = - _ § { [ } ] one of these. <br>");
             }
-            
+
             if (verify01 && verify02) {
-                areasInputs.classList.remove("erro");
-                message.style.display = "none";
-                messageIcon.style.opacity = "0";
+                disableErroShow(areasInputs, messageIcon, message);
+                return true;
             } else {
-                areasInputs.classList.add("erro");
-                message.style.display = "block";
-                messageIcon.style.opacity = "1";
+
+                enableErroShow(areasInputs, messageIcon, message)
+                return false;
+
             }
         }
-        
-        
+
+
+
     } else if (passwordContent.length < 8) {
         messageStore.push(`The password need has at least 8 positions. <br>`);
-        
-        areasInputs.classList.add("erro");
-        message.style.display = "block";
-        messageIcon.style.opacity = "1";
+
+        enableErroShow(areasInputs, messageIcon, message);
+        return false;
     }
-    
+
     message.innerHTML = messageStore.join("");
     message.style.display = "block";
 
 }
 
 function seachLetter(string, word) {
-    
+
     for (let y in string) {
         if (string[y] === word) {
             return word;
@@ -245,4 +258,20 @@ function seachLetterUpperCase(string, string02) {
 
     return false;
 }
+
+function disableErroShow(areasInputs, messageIcon, message) {
+    areasInputs.classList.remove("erro");
+    messageIcon.style.opacity = "0";
+    message.style.display = "none";
+
+}
+
+function enableErroShow(areasInputs, messageIcon, message) {
+    areasInputs.classList.add("erro");
+    messageIcon.style.opacity = "1";
+    message.style.display = "block";
+
+}
+
+
 
